@@ -12,7 +12,6 @@ export class StarshipService {
     if(!url) {
       url = 'https://swapi.dev/api/starships/';
     }
-    console.log(url);
     return this.httpService.getNoAuth(url);
   }
 

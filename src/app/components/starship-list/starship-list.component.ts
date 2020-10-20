@@ -23,7 +23,6 @@ export class StarshipListComponent implements OnInit {
   fetchNextPage() {
     let url: string = (this.lastResponse != null ? this.lastResponse.next : null);
     this.starshipService.getStarships(url).subscribe((response: PageResponse) => {
-      console.log(response);
       if (response) {
         this.starships = this.starships.concat(response.results);
         this.lastResponse = response;

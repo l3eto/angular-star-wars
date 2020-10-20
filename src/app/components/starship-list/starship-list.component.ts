@@ -20,6 +20,10 @@ export class StarshipListComponent implements OnInit {
     this.fetchNextPage();
   }
 
+  canFetchNextPage() {
+    return this.lastResponse == null || this.lastResponse != null && this.lastResponse.next != null;
+  }
+
   fetchNextPage() {
     let url: string = (this.lastResponse != null ? this.lastResponse.next : null);
     this.starshipService.getStarships(url).subscribe((response: PageResponse) => {
@@ -36,5 +40,10 @@ export class StarshipListComponent implements OnInit {
     }).slice(-1)[0];
     return 'https://starwars-visualguide.com/assets/img/starships/' + id + '.jpg';
   }
+
+  errorHandler(event) {
+    event.target.src = "assets/images/not-found.png";
+  }
+
 
 }

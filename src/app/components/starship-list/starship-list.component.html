@@ -8,13 +8,13 @@
                     <h3 class="card-title" [textContent]="starship.name"></h3>
                 </div>
                 <div class="card-body">
-                    <img class="card-img-bottom" [src]="getSrc(starship.url)">
+                    <img class="card-img-bottom" [src]="getSrc(starship.url)" (error)="errorHandler($event)">
                 </div>
             </div>
         </div>
     </div>
 </div>
-<button (click)="fetchNextPage()" class="btn btn-primary">Más datos</button>
+<button *ngIf="canFetchNextPage()" (click)="fetchNextPage()" class="btn btn-primary">Más datos</button>
 
 <div class="alert alert-danger" role="alert" *ngIf="error">
     Hi ha hagut un error al fer la petició

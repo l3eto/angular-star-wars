@@ -1,0 +1,22 @@
+<h1>Ship</h1>
+
+<div class="container">
+    <div class="card">
+        <div class="row no-gutters">
+            <div class="col-sm-6 col-md-6">
+                <img src="https://starwars-visualguide.com/assets/img/starships/{{starship.id}}.jpg" (error)="errorHandler($event)" class="img-fluid" alt="">
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="card-block px-2">
+                    <p class="card-title"><b>Nombre: </b><span [textContent]="starship.name"></span></p>
+                    <p class="card-text"><b>Modelo: </b><span [textContent]="starship.model"></span></p>
+                    <p class="card-text"><b>Fabricante: </b><span [textContent]="starship.manufacturer"></span></p>
+                    <p class="card-text"><b>Clase: </b><span [textContent]="starship.starship_class"></span></p>
+                    <p class="card-text"><b>Núm. Pilotos: </b><span [textContent]="starship.pilots.length"></span></p>
+                    <p class="card-text"><b>Núm. Películas: </b><span [textContent]="starship.films.length"></span></p>
+                    <button type="button" (click)="back()" class="btn btn-primary">Volver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

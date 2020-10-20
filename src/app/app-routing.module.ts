@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { StarshipListComponent } from './components/starship-list/starship-list.component';
+import { StarshipViewComponent } from './components/starship-view/starship-view.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'ships',
     component: StarshipListComponent
+  },
+  {
+    path: 'ship/:id',
+    component: StarshipViewComponent
   },
   {
     path: '',

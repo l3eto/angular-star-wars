@@ -37,8 +37,7 @@ export class AppComponent {
   }
 
   //  validate navigation
-  validateNavigation(path: string) 
-  {
+  validateNavigation(path: string) {
     if (path) {
       if (!this.globalService.isLoggedIn() && (this.restrictedPages.indexOf(path) === -1)) {
         this.router.navigate(['/login']);

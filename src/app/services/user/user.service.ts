@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ApiResponse } from 'src/app/models/api-response';
 import { User } from 'src/app/models/user';
 
 @Injectable({
@@ -34,13 +35,13 @@ export class UserService {
       setTimeout(() => {
         this.getByUsername(user.username).then((userFound: User) => {
           if (userFound) {
-            resolve({ success: false, message: 'Username "' + user.username + '" is already taken' });
+            resolve(new ApiResponse(false, 'Username "' + user.username + '" is already taken'));
           } else {
             let users: User[] = this.getUsers();
             user.id = (users.length > 0 && users[users.length-1] ? users[users.length-1].id : 0) + 1;
             users.push(user);
             this.setUsers(users);
-            resolve({ success: true });
+            resolve(new ApiResponse(true, 'Registration successful'));
           }
         });
       }, 1000);

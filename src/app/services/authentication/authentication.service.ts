@@ -6,6 +6,7 @@ import { User } from 'src/app/models/user';
 import { Base64 } from 'src/app/utils/base64';
 import { Global } from 'src/app/models/global';
 import { GlobalUser } from 'src/app/models/global-user';
+import { ApiResponse } from 'src/app/models/api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -20,13 +21,11 @@ export class AuthenticationService {
   login(username: string, password: string, callback: Function) {
     setTimeout(() => {
       this.userService.getByUsername(username).then((user: User) => {
-        let response: object;
         if (user !== null && user.password === password) {
-          response = {success: true};
+          callback(new ApiResponse(true, 'Logged ssuccessfull.'));
         } else {
-          response = {success: false, message: 'Username or password is incorrect'};
+          callback(new ApiResponse(false, 'Username or password is incorrect.'));
         }
-        callback(response);
       });
     }, 1000);
   }

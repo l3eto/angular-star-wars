@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiResponse } from 'src/app/models/api-response';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-register',
@@ -7,11 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-  firstname: string = '';
-  lastname: string = '';
-  username: string = '';
-  password: string = '';
+  user: User = new User();
   dataLoading: boolean = false;
   form = new FormGroup({
     firstname: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -20,14 +20,25 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(1)]),
   });
 
-  constructor() { }
+  constructor(public router: Router,
+    private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   register() {
-    //  TODO: logic register serviceng
-    console.log(this.form);
+    this.dataLoading = true;
+    this.userService.create(this.user).then((response: ApiResponse) => {
+      if (response.success) {
+        //FlashService.Success('Registration successful', true);
+        console.log(response.message);
+        this.router.navigate(['/login']);
+      } else {
+        //FlashService.Error(response.message);
+        console.log(response.message);
+        this.dataLoading = false;
+      }
+    });
   }
 
   hasError(name: string, type: string) {

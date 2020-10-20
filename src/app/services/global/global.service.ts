@@ -13,7 +13,7 @@ export class GlobalService {
   constructor() { }
 
   isLoggedIn() {
-    return false;
+    return this.data != null && this.data.currentUser != null;
   }
 
   setData(data: Global, updateCookies: boolean) {

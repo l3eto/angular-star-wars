@@ -21,7 +21,7 @@ export class AppComponent {
 
   constructor(
     private eventEmitterService: EventEmitterService,
-    public router: Router,
+    private router: Router,
     private httpService: HttpService,
     private flashService: FlashService,
     private globalService: GlobalService) 
@@ -41,7 +41,7 @@ export class AppComponent {
     }
 
     //  event on route navigation change
-    router.events.subscribe(val => {
+    this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd && val.url) {
         this.validateNavigation(val.url);
         this.flashService.clear();
@@ -56,6 +56,5 @@ export class AppComponent {
       this.router.navigate(['/login']);
     }
   }
-
 
 }

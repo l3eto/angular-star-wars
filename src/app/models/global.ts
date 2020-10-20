@@ -1,8 +1,12 @@
-import { GlobalUser } from './global-user';
-
 export class Global {
-    constructor(currentUser: GlobalUser) {
-        this.currentUser = currentUser;
+    constructor(username: string, authdata: string) {
+        this.currentUser = {
+            username: username,
+            authdata: authdata
+        };
     }
-    currentUser: GlobalUser;
+    currentUser: {
+        username: string;
+        authdata: string;
+    };
 }

@@ -1,0 +1,21 @@
+<h1>Ships</h1>
+
+<div class="ships">
+    <div class="row">
+        <div *ngFor="let starship of starships" class="col-sm-6 col-md-6 col-lg-3">
+            <div class="card ship mb-3">
+                <div class="card-header">
+                    <h3 class="card-title" [textContent]="starship.name"></h3>
+                </div>
+                <div class="card-body">
+                    <img class="card-img-bottom" [src]="getSrc(starship.url)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button (click)="fetchNextPage()" class="btn btn-primary">Más datos</button>
+
+<div class="alert alert-danger" role="alert" *ngIf="error">
+    Hi ha hagut un error al fer la petició
+</div>

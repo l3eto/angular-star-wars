@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.username, this.password, (response: ApiResponse) => {
       if (response.success) {
         this.authenticationService.setCredentials(this.username, this.password);
-        this.flashService.success(response.message, true);
+        //this.flashService.success(response.message, true);
         this.router.navigate(['/ships']);
       } else {
         this.flashService.error(response.message, false);

@@ -32,4 +32,7 @@ export class HttpService {
     return this.httpClient.get(`${url}`, this.options);
   }
 
+  getNoAuth(url: string, ) {
+    return this.httpClient.get(`${url}`);
+  }
 }

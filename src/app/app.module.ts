@@ -7,14 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ShipsComponent } from './components/ships/ships/ships.component';
+import { StarshipListComponent } from './components/starship-list/starship-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ShipsComponent
+    StarshipListComponent
   ],
   imports: [
     BrowserModule,

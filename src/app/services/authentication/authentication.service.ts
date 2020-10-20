@@ -21,8 +21,8 @@ export class AuthenticationService {
   login(username: string, password: string, callback: Function) {
     setTimeout(() => {
       this.userService.getByUsername(username).then((user: User) => {
-        if (user !== null && user.password === password) {
-          callback(new ApiResponse(true, 'Logged ssuccessfull.'));
+        if (user != null && user.password === password) {
+          callback(new ApiResponse(true, 'Connected  successfully.'));
         } else {
           callback(new ApiResponse(false, 'Username or password is incorrect.'));
         }

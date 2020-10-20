@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router'; 
 import { Global } from './models/global';
 import { GlobalService } from './services/global/global.service';
+import { FlashService } from './services/flash/flash.service';
+import { Flash } from './models/flash';
+import { EventEmitterService } from './services/event-emitter/event-emitter.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +17,22 @@ export class AppComponent {
   title = 'angular-star-wars';
   restrictedPages: string[] = ['/login', '/register'];
   loggedIn: boolean = false;
+  flash: Flash = null;
 
   constructor(
+    private eventEmitterService: EventEmitterService,
     public router: Router,
     private httpService: HttpService,
+    private flashService: FlashService,
     private globalService: GlobalService) 
   {
+
+    //  emitter flash
+    if (this.eventEmitterService.emitFlash == undefined) {
+      this.eventEmitterService.emitFlash = this.eventEmitterService.invokeFlash.subscribe((flash: Flash) => {
+        this.flash = flash;
+      });
+    }
 
     //  keep authorization user
     let data: Global = this.globalService.getData(true);
@@ -29,8 +42,9 @@ export class AppComponent {
 
     //  event on route navigation change
     router.events.subscribe(val => {
-      if (val instanceof NavigationEnd) {
+      if (val instanceof NavigationEnd && val.url) {
         this.validateNavigation(val.url);
+        this.flashService.clear();
       }
     });
 
@@ -38,11 +52,10 @@ export class AppComponent {
 
   //  validate navigation
   validateNavigation(path: string) {
-    if (path) {
-      if (!this.globalService.isLoggedIn() && (this.restrictedPages.indexOf(path) === -1)) {
-        this.router.navigate(['/login']);
-      }
+    if (!this.globalService.isLoggedIn() && (this.restrictedPages.indexOf(path) === -1)) {
+      this.router.navigate(['/login']);
     }
   }
+
 
 }

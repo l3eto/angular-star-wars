@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiResponse } from 'src/app/models/api-response';
 import { User } from 'src/app/models/user';
+import { FlashService } from 'src/app/services/flash/flash.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -20,7 +21,9 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(1)]),
   });
 
-  constructor(public router: Router,
+  constructor(
+    private flashService: FlashService,
+    private router: Router,
     private userService: UserService) { }
 
   ngOnInit(): void {
@@ -30,12 +33,10 @@ export class RegisterComponent implements OnInit {
     this.dataLoading = true;
     this.userService.create(this.user).then((response: ApiResponse) => {
       if (response.success) {
-        //FlashService.Success('Registration successful', true);
-        console.log(response.message);
+        this.flashService.success('Registration successful', true);
         this.router.navigate(['/login']);
       } else {
-        //FlashService.Error(response.message);
-        console.log(response.message);
+        this.flashService.error(response.message, false);
         this.dataLoading = false;
       }
     });

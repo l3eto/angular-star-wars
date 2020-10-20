@@ -1,5 +1,7 @@
+import { HttpService } from './services/http/http.service';
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router'; 
+import { Global } from './models/global';
 import { GlobalService } from './services/global/global.service';
 
 @Component({
@@ -14,9 +16,16 @@ export class AppComponent {
   loggedIn: boolean = false;
 
   constructor(
-    public router: Router, 
+    public router: Router,
+    private httpService: HttpService,
     private globalService: GlobalService) 
   {
+
+    //  keep authorization user
+    let data: Global = this.globalService.getData(true);
+    if (data != null && data.currentUser) {
+      this.httpService.setAuthorization(data.currentUser.authdata);
+    }
 
     //  event on route navigation change
     router.events.subscribe(val => {

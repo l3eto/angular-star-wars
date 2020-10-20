@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    //  TODO: logic register service
+    //  TODO: logic register serviceng
     console.log(this.form);
   }
 

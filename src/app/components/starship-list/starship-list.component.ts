@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class StarshipListComponent implements OnInit {
 
   error: boolean = false;
+  loadingResponse: boolean = true;
   starships: Starship[] = [];
   lastResponse: PageResponse = null;
 
@@ -24,16 +25,18 @@ export class StarshipListComponent implements OnInit {
   }
 
   canFetchNextPage() {
-    return this.lastResponse == null || this.lastResponse != null && this.lastResponse.next != null;
+    return !this.loadingResponse && (this.lastResponse == null || (this.lastResponse != null && this.lastResponse.next != null));
   }
 
   fetchNextPage() {
     let url: string = (this.lastResponse != null ? this.lastResponse.next : null);
+    this.loadingResponse = true;
     this.starshipService.getStarships(url).subscribe((response: PageResponse) => {
       if (response) {
         response.results.map((starship: Starship) => this.setId(starship));
         this.starships = this.starships.concat(response.results);
         this.lastResponse = response;
+        this.loadingResponse = false;
       }
     });
   }
@@ -51,9 +54,13 @@ export class StarshipListComponent implements OnInit {
     return starship;
   }
 
-  errorHandler(event: any) {
-    event.target.src = "assets/images/not-found.png";
+  onLoadHandler(starship: Starship) {
+    starship.loadedImage = true;
   }
 
+  onErrorHandler(starship: Starship) {
+    starship.loadedImage = true;
+    starship.errorImage = true;
+  }
 
 }

@@ -1,20 +1,25 @@
-<div class="col-md-4 col-md-offset-4">
-    <h2>Login</h2>
-    <form name="form" [formGroup]="form" (ngSubmit)="form.valid && login()" role="form">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" class="form-control" [ngClass]="{'is-invalid': hasError('username', 'required')}" [(ngModel)]="username" formControlName="username"/>
-            <span [hidden]="!hasError('username', 'required')" class="text-error">Username is required</span>
+<div class="login mt-4">
+    <div class="row">
+        <div class="col-sm-8 col-md-6 col-lg-5 mx-auto">
+            <p class="text-center fs-16 font-weight-bold">Iniciar Sesión</p>
+            <p class="text-center fs-14 pb-3">Introduzca su correo y contraseña para acceder</p>
+            <form name="form" [formGroup]="form" (ngSubmit)="form.valid && login()" role="form">
+                <div class="form-group pb-2">
+                    <input type="text" name="username" id="username" class="form-control fs-14" placeholder="Usuario *" [ngClass]="{'is-invalid': hasError('username', 'required')}" [(ngModel)]="username" formControlName="username"/>
+                    <span [hidden]="!hasError('username', 'required')" class="text-error">El usuario es requerido</span>
+                </div>
+                <div class="form-group pb-2">
+                    <input type="password" name="password" id="password" class="form-control fs-14" placeholder="Contraseña *" [ngClass]="{'is-invalid': hasError('password', 'required')}" [(ngModel)]="password" formControlName="password"/>
+                    <span [hidden]="!hasError('password', 'required')" class="text-error">La contraseña es requerida</span>
+                </div>
+                <div class="form-actions py-3">
+                    <button type="submit" [disabled]="form.invalid || dataLoading" class="btn btn-primary">Iniciar Sesión</button>
+                    <img *ngIf="dataLoading"
+                        src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    <div class="mt-5 mb-3 text-center fs-14">¿No tiene cuenta?</div>
+                    <a [routerLink]="['/register']" class="btn btn-secondary">Crear Cuenta</a>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="form-control" [ngClass]="{'is-invalid': hasError('password', 'required')}" [(ngModel)]="password" formControlName="password"/>
-            <span [hidden]="!hasError('password', 'required')" class="text-error">Password is required</span>
-        </div>
-        <div class="form-actions">
-            <button type="submit" [disabled]="form.invalid || dataLoading" class="btn btn-primary">Login</button>
-            <img *ngIf="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-            <a [routerLink]="['/register']" class="btn btn-link">Register</a>
-        </div>
-    </form>
+    </div>
 </div>

@@ -1,20 +1,37 @@
-<h1>Ships</h1>
-
-<div class="ships">
+<!--
+<div class="container">
     <div class="row">
-        <div *ngFor="let starship of starships" class="col-sm-6 col-md-6 col-lg-3">
-            <div class="card ship mb-3" (click)="openStarship(starship)">
-                <div class="card-header">
-                    <h3 class="card-title" [textContent]="starship.name"></h3>
+        <div class="col">
+            <h1 class="title">SHIPS</h1>
+        </div>
+    </div>
+</div>
+-->
+<div class="ships mt-4">
+    <div class="row">
+        <div *ngFor="let starship of starships" class="col-sm-6 col-md-6 col-lg-3 pb-4">
+            <div class="card ship" [class]="{'h-100': starship.errorImage}">
+                <div class="ship-image" (click)="openStarship(starship)" [class]="{'h-100': starship.errorImage}" [hidden]="!starship.loadedImage">
+                    <img *ngIf="!starship.errorImage" class="card-img-top" src="https://starwars-visualguide.com/assets/img/starships/{{starship.id}}.jpg" 
+                        (load)="onLoadHandler(starship)" 
+                        (error)="onErrorHandler(starship)" alt="{{starship.name}}">
+                    <div *ngIf="starship.errorImage" class="error-background" (click)="openStarship(starship)"></div>
+                    <div *ngIf="starship.errorImage" class="error-image">Imagen no disponible</div>
                 </div>
-                <div class="card-body">
-                    <img class="card-img-bottom" src="https://starwars-visualguide.com/assets/img/starships/{{starship.id}}.jpg" (error)="errorHandler($event)">
+                <div class="card-body px-0 py-3">
+                    <span class="card-text" (click)="openStarship(starship)" [textContent]="starship.name"></span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<button *ngIf="canFetchNextPage()" (click)="fetchNextPage()" class="btn btn-primary">Más datos</button>
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <button *ngIf="canFetchNextPage()" (click)="fetchNextPage()" class="btn btn-primary">Más datos</button>
+        </div>
+    </div>
+</div>
 
 <div class="alert alert-danger" role="alert" *ngIf="error">
     Hi ha hagut un error al fer la petició

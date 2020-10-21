@@ -1,26 +1,111 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'BasisGrotesqueRegularPro';
+}
+
 a {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.ship .panel-body img {
-    max-width: 100%;
-    object-fit: cover;
+.btn-primary, 
+.btn-secondary {
+  font-family: "BasisGrotesqueRegularPro";
+  font-weight: inherit;
+  line-height: 1;
+  text-align: center;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  height: auto;
+  min-height: 40px;
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  /*max-width: 350px;*/
+  border-radius: 0;
 }
 
-.container {
-    width: 100%; 
+.btn-primary {
+  color: #fff;
+  background-color: #b99d6b;
+  border-color: #b99d6b;
+}
+.btn-primary.disabled, 
+.btn-primary:disabled {
+  color: #fff;
+  background-color: #ceba97!important;
+  border-color: #ceba97!important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active:hover,
+.btn-primary:active,
+.btn-primary.active {
+  color: #fff!important;
+  background-color: #ceba97!important;
+  border-color: #ceba97!important;
 }
 
-@media (min-width: 992px) and (max-width: 1200px){
-    .panel-heading {
-        min-height: 72px;
-        height: 58px;
-    }
+.btn-secondary {
+  color: #fff;
+  background-color: black;
+  border-color: black;
+}
+.btn-secondary.disabled, 
+.btn-secondary:disabled {
+  color: #fff;
+  background-color: #222!important;
+  border-color: #222!important;
+}
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active:hover,
+.btn-secondary:active,
+.btn-secondary.active {
+  color: #fff!important;
+  background-color: #222!important;
+  border-color: #222!important;
 }
 
-@media (min-width: 992px){
-    .container {
-        width: 750px; 
-    }
+*input:active,
+input:focus, 
+input:active:focus, 
+input.active:focus,
+*.btn:active, 
+.btn:focus, 
+.btn:active:focus, 
+.btn.active:focus {
+  outline: none!important;
+  box-shadow: none!important;
+}
+
+.form-control:focus {
+  border-color: #ceba97!important;
+}
+
+
+.form-group input {
+  border-radius: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 3px;
+  padding: 0;
+  height: 36px;
+  color: #000;
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+.fs-14 {
+    font-size: 14px;
 }

@@ -35,8 +35,13 @@ export class StarshipViewComponent implements OnInit {
     return starship;
   }
 
-  errorHandler(event: any) {
-    event.target.src = "assets/images/not-found.png";
+  onLoadHandler(starship: Starship) {
+    starship.loadedImage = true;
+  }
+
+  onErrorHandler(starship: Starship) {
+    starship.loadedImage = true;
+    starship.errorImage = true;
   }
 
   back() {

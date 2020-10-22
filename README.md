@@ -38,3 +38,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   - Se debe implementar un botón de volver al listado
 - Tarea.4: Modernización del site. Cambia los estilos que creas pertinentes. El único criterio es que a dirección le gustaría que se pareciera lo máximo posible a la web de Massimo Dutti.
 - Tarea.5: Cuando entras por primera vez te debe redirigir a la página de naves.
+- Tarea.6: Cache  
+  - Implementar una caché del lado de cliente para proteger la api:
+      - Implementa un sistema de caché que evite realizar la misma petición contra el servidor durante 5 minutos.
+      - Para resolver este punto intenta aprovechar las vengajas que ofrece Angular

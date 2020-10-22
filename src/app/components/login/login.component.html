@@ -5,11 +5,11 @@
             <p class="text-center fs-14 pb-3">Introduzca su correo y contraseña para acceder</p>
             <form name="form" [formGroup]="form" (ngSubmit)="form.valid && login()" role="form">
                 <div class="form-group pb-2">
-                    <input type="text" name="username" id="username" class="form-control fs-14" placeholder="Usuario *" [ngClass]="{'is-invalid': hasError('username', 'required')}" [(ngModel)]="username" formControlName="username"/>
+                    <input type="text" name="username" id="username" class="form-control fs-14" placeholder="Usuario *" [ngClass]="{'is-invalid': hasError('username', 'required')}" formControlName="username"/>
                     <span [hidden]="!hasError('username', 'required')" class="text-error">El usuario es requerido</span>
                 </div>
                 <div class="form-group pb-2">
-                    <input type="password" name="password" id="password" class="form-control fs-14" placeholder="Contraseña *" [ngClass]="{'is-invalid': hasError('password', 'required')}" [(ngModel)]="password" formControlName="password"/>
+                    <input type="password" name="password" id="password" class="form-control fs-14" placeholder="Contraseña *" [ngClass]="{'is-invalid': hasError('password', 'required')}" formControlName="password"/>
                     <span [hidden]="!hasError('password', 'required')" class="text-error">La contraseña es requerida</span>
                 </div>
                 <div class="form-actions py-3">

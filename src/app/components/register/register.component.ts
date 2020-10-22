@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiResponse } from 'src/app/models/api-response';
-import { User } from 'src/app/models/user';
 import { FlashService } from 'src/app/services/flash/flash.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -12,7 +11,6 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  user: User = new User();
   dataLoading: boolean = false;
   form = new FormGroup({
     firstname: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -31,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.dataLoading = true;
-    this.userService.create(this.user).then((response: ApiResponse) => {
+    this.userService.create(this.form.value).then((response: ApiResponse) => {
       if (response.success) {
         this.flashService.success(response.message, true);
         this.router.navigate(['/login']);

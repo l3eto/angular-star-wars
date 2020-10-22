@@ -6,11 +6,14 @@ import { EventEmitterService } from './services/event-emitter/event-emitter.serv
 import { FlashService } from './services/flash/flash.service';
 import { GlobalService } from './services/global/global.service';
 import { HttpService } from './services/http/http.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        FormsModule,
+        ReactiveFormsModule,
         RouterTestingModule,
         HttpClientTestingModule
       ],

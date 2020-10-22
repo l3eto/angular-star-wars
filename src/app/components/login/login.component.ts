@@ -12,8 +12,6 @@ import { FlashService } from 'src/app/services/flash/flash.service';
 })
 export class LoginComponent implements OnInit {
 
-  username: string = '';
-  password: string = '';
   dataLoading: boolean = false;
   form = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -31,9 +29,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.dataLoading = true;
-    this.authenticationService.login(this.username, this.password, (response: ApiResponse) => {
+    this.authenticationService.login(this.form.value.username, this.form.value.password, (response: ApiResponse) => {
       if (response.success) {
-        this.authenticationService.setCredentials(this.username, this.password);
+        this.authenticationService.setCredentials(this.form.value.username, this.form.value.password);
         //this.flashService.success(response.message, true);
         this.router.navigate(['/ships']);
       } else {

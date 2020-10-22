@@ -1,7 +1,7 @@
 import { UserService } from 'src/app/services/user/user.service';
 import { FlashService } from 'src/app/services/flash/flash.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -12,6 +12,8 @@ describe('RegisterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        FormsModule,
+        ReactiveFormsModule,
         RouterTestingModule
       ],
       providers: [

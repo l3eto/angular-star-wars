@@ -16,8 +16,6 @@ export class StarshipService {
 
   getStarship(id: string) {
     return this.httpService.getNoAuth(`${this.apiUrl}${id}/`);
-  }
-
-  
+  } 
 
 }

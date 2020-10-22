@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.authenticationService.clearCredentials();
   }
 
   login() {

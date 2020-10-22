@@ -1,12 +1,24 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { EventEmitterService } from './services/event-emitter/event-emitter.service';
+import { FlashService } from './services/flash/flash.service';
+import { GlobalService } from './services/global/global.service';
+import { HttpService } from './services/http/http.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        HttpService,
+        EventEmitterService,
+        FlashService,
+        GlobalService
       ],
       declarations: [
         AppComponent
@@ -20,16 +32,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-star-wars'`, () => {
+  it(`should have as title 'Angular StarWars'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-star-wars');
+    expect(app.title).toEqual('Angular StarWars');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-star-wars app is running!');
-  });
 });

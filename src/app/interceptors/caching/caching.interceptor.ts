@@ -33,6 +33,7 @@ export class CachingInterceptor implements HttpInterceptor {
       })
     );
   }
+  
   private isRequestCachable(request: HttpRequest<any>) {
     return (request.method === 'GET') && (request.url.indexOf(CACHABLE_URL) > -1);
   }

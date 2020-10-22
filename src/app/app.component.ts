@@ -14,7 +14,7 @@ import { EventEmitterService } from './services/event-emitter/event-emitter.serv
 })
 export class AppComponent {
 
-  title = 'angular-star-wars';
+  title = 'Angular StarWars';
   restrictedPages: string[] = ['/login', '/register'];
   loggedIn: boolean = false;
   flash: Flash = null;

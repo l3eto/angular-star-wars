@@ -5,20 +5,24 @@ import { CacheEntry, MAX_CACHE_AGE } from './cache-entry';
 
 @Injectable()
 export class CacheService implements Cache {
+
   cacheMap = new Map<string, CacheEntry>();
-  get(req: HttpRequest<any>): HttpResponse<any> | null {
-    const entry = this.cacheMap.get(req.urlWithParams);
+
+  get(request: HttpRequest<any>): HttpResponse<any> | null {
+    const entry = this.cacheMap.get(request.urlWithParams);
     if (!entry) {
       return null;
     }
     const isExpired = (Date.now() - entry.entryTime) > MAX_CACHE_AGE;
     return isExpired ? null : entry.response;
   }
-  put(req: HttpRequest<any>, res: HttpResponse<any>): void {
-    const entry: CacheEntry = { url: req.urlWithParams, response: res, entryTime: Date.now() };
-    this.cacheMap.set(req.urlWithParams, entry);
+
+  put(request: HttpRequest<any>, response: HttpResponse<any>): void {
+    const entry: CacheEntry = { url: request.urlWithParams, response: response, entryTime: Date.now() };
+    this.cacheMap.set(request.urlWithParams, entry);
     this.deleteExpiredCache();
   }
+
   private deleteExpiredCache() {
     this.cacheMap.forEach(entry => {
       if ((Date.now() - entry.entryTime) > MAX_CACHE_AGE) {
@@ -26,4 +30,5 @@ export class CacheService implements Cache {
       }
     })
   }
+
 }

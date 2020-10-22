@@ -35,4 +35,5 @@ export class HttpService {
   getNoAuth(url: string, ) {
     return this.httpClient.get(`${url}`);
   }
+  
 }

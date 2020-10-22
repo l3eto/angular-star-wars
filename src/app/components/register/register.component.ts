@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     this.dataLoading = true;
     this.userService.create(this.user).then((response: ApiResponse) => {
       if (response.success) {
-        this.flashService.success('Registration successful', true);
+        this.flashService.success(response.message, true);
         this.router.navigate(['/login']);
       } else {
         this.flashService.error(response.message, false);

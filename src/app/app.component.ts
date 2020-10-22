@@ -57,4 +57,17 @@ export class AppComponent {
     }
   }
 
+  isLoggedIn() {
+    return this.globalService.isLoggedIn();
+  }
+
+  isRouteActive(name: string) {
+    return this.router.url.indexOf(name) !== -1;
+  }
+
+  getCurrentUserName() {
+    let data: Global = this.globalService.getData(false);
+    return data != null && data.currentUser != null ? data.currentUser.username : null;
+  }
+
 }

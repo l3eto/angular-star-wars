@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class StarshipViewComponent implements OnInit {
 
   starship: Starship = new Starship();
+  dataLoading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,9 +20,12 @@ export class StarshipViewComponent implements OnInit {
     private starshipService: StarshipService) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
+    this.dataLoading = true;
     this.starshipService.getStarship(this.route.snapshot.params.id).subscribe((response: Starship) => {
       if (response) {
         this.starship = this.setId(response);
+        this.dataLoading = false;
       }
     });
   }

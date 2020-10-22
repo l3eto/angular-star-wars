@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CachingInterceptor } from './interceptors/caching/caching.interceptor';
 import { CacheService } from './services/cache/cache.service';
 import { httpInterceptorProviders } from './interceptors/interceptors';
+import { OtherComponent } from './components/other/other.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { httpInterceptorProviders } from './interceptors/interceptors';
     LoginComponent,
     RegisterComponent,
     StarshipListComponent,
-    StarshipViewComponent
+    StarshipViewComponent,
+    OtherComponent
   ],
   imports: [
     BrowserModule,

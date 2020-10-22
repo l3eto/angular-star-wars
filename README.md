@@ -42,3 +42,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   - Implementar una caché del lado de cliente para proteger la api:
       - Implementa un sistema de caché que evite realizar la misma petición contra el servidor durante 5 minutos.
       - Para resolver este punto intenta aprovechar las vengajas que ofrece Angular
+- Tarea.7: Implementar un menú para los usuarios registrados:
+   - Este menú debe permitir cambiar de página. Crea una página de prueba para comprobar que la navegación funciona.

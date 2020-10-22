@@ -1,14 +1,7 @@
-<!--
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1 class="title">SHIP</h1>
-        </div>
-    </div>
-</div>
--->
-<button type="button" (click)="back()" class="btn btn-primary back mt-4">VOLVER</button>
 <div class="card ship">
+    <div class="row">
+        <button type="button" (click)="back()" class="btn btn-primary back">VOLVER</button>
+    </div>
     <div class="row">
         <div class="col-md-6 pb-4">
             <div class="ship-image" [class]="{'h-100': starship.errorImage}" [hidden]="!starship.loadedImage">
@@ -16,7 +9,8 @@
                     src="https://starwars-visualguide.com/assets/img/starships/{{starship.id}}.jpg" (load)="onLoadHandler(starship)"
                     (error)="onErrorHandler(starship)" alt="{{starship.name}}">
                 <div *ngIf="starship.errorImage" class="error-background"></div>
-                <div *ngIf="starship.errorImage" class="error-image">Imagen no disponible</div>
+                <div *ngIf="starship.errorImage && !dataLoading" class="error-image">Imagen no disponible</div>
+                <div *ngIf="dataLoading" class="error-image">Cargando imagen</div>
             </div>
         </div>
         <div class="col-md-6 pb-4">
@@ -39,6 +33,13 @@
                 <p class="card-text"><b>Núm. Películas: </b><span [textContent]="starship.films ? starship.films.length : 0"></span>
                 </p>            
             </div>
+        </div>
+    </div>
+</div>
+<div class="loading-block" *ngIf="dataLoading">
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
 </div>

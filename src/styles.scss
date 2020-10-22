@@ -109,3 +109,16 @@ input.active:focus,
 .fs-14 {
     font-size: 14px;
 }
+
+.loading-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255, 0.25);
+}
+.loading-block > div {
+    position: relative;
+    top: 50%;
+}

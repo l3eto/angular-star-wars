@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+### Tareas (Tags Versión)
+
+- Tarea.1: Migrar el prototipo actual a un proyecto nuevo con angular.
+- Tarea.2: Listado naves: 
+  -  Implementar correctamente la paginación del listado de naves.
+  -  Hay imágenes que no existen, en ese caso se debe mostrar un texto o imagen informando que no está disponible.
+- Tarea.3: Creación de una ficha de detalle de la nave:
+  - Se quiere crear una ficha que se abra al hacer click sobre una de las naves que aparecen.
+  - Se debe implementar un botón de volver al listado
+- Tarea.4: Modernización del site. Cambia los estilos que creas pertinentes. El único criterio es que a dirección le gustaría que se pareciera lo máximo posible a la web de Massimo Dutti.

@@ -21,9 +21,9 @@ export class AuthenticationService {
     setTimeout(() => {
       this.userService.getByUsername(username).then((user: User) => {
         if (user != null && user.password === password) {
-          callback(new ApiResponse(true, 'Connected  successfully.'));
+          callback(new ApiResponse(true, 'Conectado correctamente.'));
         } else {
-          callback(new ApiResponse(false, 'Username or password is incorrect.'));
+          callback(new ApiResponse(false, 'La combinación de usuario y contraseña no es correcta.'));
         }
       });
     }, 1000);

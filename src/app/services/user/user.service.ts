@@ -35,13 +35,13 @@ export class UserService {
       setTimeout(() => {
         this.getByUsername(user.username).then((userFound: User) => {
           if (userFound) {
-            resolve(new ApiResponse(false, 'Username "' + user.username + '" is already taken'));
+            resolve(new ApiResponse(false, 'EL usuario "' + user.username + '" ya existe.'));
           } else {
             let users: User[] = this.getUsers();
             user.id = (users.length > 0 && users[users.length-1] ? users[users.length-1].id : 0) + 1;
             users.push(user);
             this.setUsers(users);
-            resolve(new ApiResponse(true, 'Registration successful'));
+            resolve(new ApiResponse(true, 'Usuario registrado correctamente.'));
           }
         });
       }, 1000);

@@ -5,3 +5,17 @@
     letter-spacing: 5px;
     text-transform: uppercase;
 }
+.alert.alert-danger {
+    background: #fcd8cd;
+    border-color: #fcd8cd;
+    color: #000;
+    border-radius: 0;
+    text-align: center;
+}
+.alert.alert-success {
+    background: #cdfcd2;
+    border-color: #cdfcd2;
+    color: #000;
+    border-radius: 0;
+    text-align: center;
+}
